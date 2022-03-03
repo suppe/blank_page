@@ -21,10 +21,14 @@ function setBackgroundColor(color) {
     }
 }
 
-window.onload = function newQuote() {
-    load_theme();
+function setRandomQuote() {
     var randomNumber = Math.floor(Math.random() * (quotes.length));
     document.getElementById('quoteDisplay').innerHTML = quotes[randomNumber];
+}
+
+window.onload = function newQuote() {
+    load_theme();
+    setRandomQuote();
 }
 
 chrome.storage.onChanged.addListener((changes, area) => {

@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <link rel="stylesheet" type="text/css" href="options.css">
+  <head>
+    <link rel="stylesheet" type="text/css" href="options.css">
+    <script defer src="options.js"></script>
+    <title>Hello options!</title>
+  </head>
 
-  <title>Hello options!</title>
-</head>
+  <body class="light">
+    <!-- Save Status Label -->
+    <div id="logo">blank_page</div>
 
-<body class="light">
-  <!-- Save Status Label -->
-  <div id="logo">blank_page</div>
+    <!-- Darkmode -->
+    <div class="subHeadline">Theme:</div>
+    <select id="theme" required class="forms">
+      <option value="light" selected="selected">Lightmode</option>
+      <option value="dark">Darkmode</option>
+    </select>
 
-  <!-- Darkmode -->
-  <div class="optionHeadline">Theme:</div>
-  <select id="theme" required>
-    <option value="light" selected="selected">Lightmode</option>
-    <option value="dark">Darkmode</option>
-  </select>
-
-  <!-- Snippets -->
-  <div class="optionHeadline">Snippets:</div>
-  <input type="text" name="addsnippet" id="txt" placeholder="Add Snippet" autocomplete="off">
-  <ul id="list"></ul>
-
-  <script src="options.js"></script>
-</body>
-
+    <!-- Snippets -->
+    <div class="subHeadline">Snippets:</div>
+    <input type="text" name="addsnippet" id="txt" placeholder="Add Snippet" autocomplete="off" class="forms">
+    <ul id="list"></ul>
+    
+  </body>
 </html>

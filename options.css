@@ -1,5 +1,4 @@
 body {
-  /*background-color: #f8f8f8;*/
   background-color: var(--bg);
   width: 150px;
   text-align: center;
@@ -7,73 +6,46 @@ body {
   color: var(--text);
 }
 
-.optionHeadline {
-  /*color: #393939;*/
+/*LOGO*/
+#logo {
+  color: var(--logo);
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+/*FORMS*/
+.forms {
+  border: none;
+  padding: .75em 1em .5em 1em;
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1);
+  color: var(--white);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  font-size: 1em;
+  background-color: var(--forms-bg);
+  text-align-last: center;
+}
+
+.forms:focus {
+  outline: none;
+}
+
+.subHeadline {
   padding-bottom: 4px;
   margin-top: 15px;
 }
 
-.optionSnippets {
-  color: #747474;
-  font-size: 10px;
-  padding-bottom: 3px 0 4px 0;
-  margin-bottom: 1px;
-  width: 148px;
-}
-
+/*SELECT*/
 select {
-  border: 1px solid black;
-  padding: .75em 1em .5em 1em;
-  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1);
-  color: white;
-  text-align-last: center;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  border-radius: 0;
-  font-size: 1em;
   width: 100%;
-  background: #333 url(icons/arrow_down.png) no-repeat 99.5% center;
+  background: var(--forms-bg) url(icons/arrow_down.png) no-repeat 99.5% center;
 }
 
-button {
-  border: 1px solid black;
-  padding: .75em 1em .5em 1em;
-  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1);
-  color: white;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  border-radius: 0;
-  font-size: 1em;
-  width: 100%;
-  background-color: #333;
-}
-
-option {
-  background: #222;
-  border-top: 1px solid #444;
-  padding: .3em 1em .3em 1em;
-}
-
+/*INPUT*/
 input {
-  border: 1px solid black;
-  padding: .75em 1em .5em 1em;
-  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1);
-  color: white;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  border-radius: 0;
-  font-size: 1em;
-  background-color: #333;
-  text-align: center;
   width: 127px;
   height: 17px;
   margin-bottom: 5px;
@@ -84,47 +56,16 @@ input:focus {
   height: 15px;
   width: 125px;
   color: #4a4a4a;
-  background-color: #ffffff;
+  background-color: var(--white);
+  cursor: text;
 }
 
 ::placeholder {
-  color: white;
+  color: var(--white);
   opacity: 1;
 }
 
-.optionBody {
-  width: 500px;
-}
-
-input:focus {
-  cursor: text;
-  outline: none;
-}
-
-button:focus {
-  outline: none;
-}
-
-select:focus {
-  outline: none;
-}
-
-input:focus::-webkit-input-placeholder {
-  color: transparent !important;
-}
-
-input:focus::-moz-placeholder {
-  color: transparent !important;
-}
-
-input:focus:-ms-input-placeholder {
-  color: transparent !important;
-}
-
-input:focus:-moz-placeholder {
-  color: transparent !important;
-}
-
+/*LIST*/
 ul {
   list-style-type: none;
   padding: 0;
@@ -147,12 +88,6 @@ li:hover {
   cursor: pointer;
 }
 
-#logo {
-  color: var(--logo);
-  font-size: 15px;
-  margin-top: 20px;
-}
-
 /*Themes*/
 :root {
   --white: white;
@@ -162,6 +97,12 @@ li:hover {
   --bg-dark-grey: #444444;
   --logo-dark-grey:#383838;
   --logo-light-grey: #f1f1f1;
+  --li-bg-hover: #ffa3a3;
+  --li-bg: #dedede;
+  --li-color: #747474;
+  --input-focus-border: #efefef;
+  --input-focus: #4a4a4a;
+  --forms-bg: #333333;
 }
 
 .light {
@@ -174,13 +115,4 @@ li:hover {
   --text: var(--text-light-grey);
   --bg: var(--bg-dark-grey);
   --logo: var(--logo-light-grey);
-}
-
-
-#dark::before {
-  background: #e61cc4;
-}
-
-#light::before {
-  background: #1ae44d;
 }
