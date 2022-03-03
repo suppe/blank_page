@@ -68,14 +68,6 @@ function snippetToHtml(snippet) {
   }
 
 
-
-  // li.onclick = function() {
-  //   index = tab.indexOf(li.innerHTML);
-  //   console.log(li.innerHTML + " INDEX = " + index);
-  //   // set the selected li value into input text
-  //   //inputText.value = li.innerHTML;
-  //   deleteLI();
-
 }
 
 function addLI() {
@@ -148,22 +140,7 @@ input.addEventListener("keyup", function(event) {
 });
 
 //Chrome Cloud Storage
-
-function save_theme(value) {
-
-  var quotes = ['flower', 'stone', 'sun'];
-
-  chrome.storage.sync.set({'theme': value});
-  //chrome.storage.sync.set({'quotes': quotes});
-}
-
-function load_theme() {
-  chrome.storage.sync.get('theme', function(data){
-    setColorThemeOption(data.theme);
-    setBackgroundColor(data.theme);
-  });
-}
-
+//Quotes
 function load_quote() {
   chrome.storage.sync.get('quotes', function(data){
     addQuote(data.quotes);
@@ -181,36 +158,46 @@ function addQuote(quotes) {
   refreshArray();
 }
 
-function setColorThemeOption(value) {
-  document.getElementById('theme').value = value;
+//Themes
+function save_theme(value) {
+
+  var quotes = ['flower', 'stone', 'sun'];
+
+  chrome.storage.sync.set({'theme': value});
+  //chrome.storage.sync.set({'quotes': quotes});
 }
 
-function setBackgroundColor(color) {
-  if(color === 'dark') {
-    document.body.style.backgroundColor = "#444444";
-  } else {
-    document.body.style.backgroundColor = "#ffffff";
-  }
+function load_theme() {
+  chrome.storage.sync.get('theme', function(data){
+    switchTheme(data.theme);
+  });
 }
 
 const select = document.getElementById('theme');
 select.addEventListener('change', function() {
   save_theme(select.value);
-  setBackgroundColor(select.value);
-  setSnackbar();
+  switchTheme(select.value)   
 });
 
+function switchTheme(theme) {
+  document.getElementById('theme').value = theme;
+  if(theme === 'dark') {
+    document.body.classList.replace('light', 'dark');
+  } else {
+    document.body.classList.replace('dark', 'light');
+  }
+}
+
+function setLanguage(language) {
+  if(language === 'de-DE') {
+    console.log('deutsch');
+  } else {
+    console.log('englisch');
+  }
+} 
 
 window.onload = function listen() {
   load_theme();
   load_quote();
-}
-
-function setSnackbar() {
-  let snackbar = document.getElementById('snackbar');
-  snackbar.style.opacity = '1';
-  snackbar.innerHTML = 'Gespeichert!';
-  setTimeout(function() {
-    snackbar.style.opacity = '0';
-}, 2000);
+  setLanguage(navigator.language);
 }

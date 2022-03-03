@@ -4,31 +4,24 @@
 <head>
   <link rel="stylesheet" type="text/css" href="options.css">
 
-  <title>hello options!</title>
+  <title>Hello options!</title>
 </head>
 
-<body>
+<body class="light">
   <!-- Save Status Label -->
   <div id="logo">blank_page</div>
 
   <!-- Darkmode -->
-  <div class="optionText" id="themebox">
-    <div class="optionHeadline">Theme:</div>
-    <select id="theme" required>
-      <option value="light" selected="selected">Lightmode</option>
-      <option value="dark">Darkmode</option>
-    </select>
-  </div>
+  <div class="optionHeadline">Theme:</div>
+  <select id="theme" required>
+    <option value="light" selected="selected">Lightmode</option>
+    <option value="dark">Darkmode</option>
+  </select>
 
   <!-- Snippets -->
-  <div class="optionText" id="titleSnippets">
-    <div class="optionHeadline">Snippets:</div>
-    <input type="text" name="addsnippet" id="txt" placeholder="Add Snippet" autocomplete="off">
-    <ul id="list"></ul>
-  </div>
-
-  <!-- Save Status Label -->
-  <div id="snackbar">&nbsp;</div>
+  <div class="optionHeadline">Snippets:</div>
+  <input type="text" name="addsnippet" id="txt" placeholder="Add Snippet" autocomplete="off">
+  <ul id="list"></ul>
 
   <script src="options.js"></script>
 </body>

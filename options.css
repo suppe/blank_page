@@ -1,17 +1,16 @@
 body {
-  background-color: #f8f8f8;
+  /*background-color: #f8f8f8;*/
+  background-color: var(--bg);
   width: 150px;
   text-align: center;
   font-family: "Hack";
-}
-
-.optionText {
-  color: #393939;
+  color: var(--text);
 }
 
 .optionHeadline {
-  color: #393939;
+  /*color: #393939;*/
   padding-bottom: 4px;
+  margin-top: 15px;
 }
 
 .optionSnippets {
@@ -148,25 +147,40 @@ li:hover {
   cursor: pointer;
 }
 
-#titleSnippets {
-  margin-top: 15px;
-}
-
-#snackbar {
-  font-size: 10px;
-  color: #bd2e2e;
-  font-size: 10px;
-  transition: opacity 1s;
-  margin: 10px 0px;
-  opacity: 0;
-}
-
-#themebox {
-  margin-top: 15px;
-}
-
 #logo {
-  color: #383838;
+  color: var(--logo);
   font-size: 15px;
   margin-top: 20px;
+}
+
+/*Themes*/
+:root {
+  --white: white;
+  --text-light-grey: #929292;
+  --text-dark-grey: #393939;
+  --bg-light-grey: #f8f8f8;
+  --bg-dark-grey: #444444;
+  --logo-dark-grey:#383838;
+  --logo-light-grey: #f1f1f1;
+}
+
+.light {
+  --text: var(--text-dark-grey);
+  --bg: var(--bg-light-grey);
+  --logo: var(--logo-dark-grey);
+}
+
+.dark {
+  --text: var(--text-light-grey);
+  --bg: var(--bg-dark-grey);
+  --logo: var(--logo-light-grey);
+}
+
+
+#dark::before {
+  background: #e61cc4;
+}
+
+#light::before {
+  background: #1ae44d;
 }
