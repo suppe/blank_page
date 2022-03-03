@@ -1,9 +1,10 @@
+/*BODY*/
 body {
-  background-color: var(--bg);
-  width: 150px;
+  color: var(--text);
+  background: var(--bg);
   text-align: center;
   font-family: "Hack";
-  color: var(--text);
+  width: 150px;
 }
 
 /*LOGO*/
@@ -15,18 +16,18 @@ body {
 
 /*FORMS*/
 .forms {
-  border: none;
-  padding: .75em 1em .5em 1em;
-  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1);
   color: var(--white);
-  cursor: pointer;
+  background: var(--grey-dark1);
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1);
+  font-size: 1em;
+  text-align-last: center;
+  padding: .75em 1em .5em 1em;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0;
-  font-size: 1em;
-  background-color: var(--forms-bg);
-  text-align-last: center;
+  cursor: pointer;
 }
 
 .forms:focus {
@@ -40,23 +41,23 @@ body {
 
 /*SELECT*/
 select {
+  background: var(--grey-dark1) url(icons/arrow_down.png) no-repeat 99.5% center;
   width: 100%;
-  background: var(--forms-bg) url(icons/arrow_down.png) no-repeat 99.5% center;
 }
 
 /*INPUT*/
 input {
+  margin-bottom: 5px;
   width: 127px;
   height: 17px;
-  margin-bottom: 5px;
 }
 
 input:focus {
-  border: 1px solid #efefef;
+  color: var(--grey-dark2);
+  background: var(--white);
+  border: 1px solid var(--grey-light2);
   height: 15px;
   width: 125px;
-  color: #4a4a4a;
-  background-color: var(--white);
   cursor: text;
 }
 
@@ -73,46 +74,43 @@ ul {
 }
 
 li {
-  color: #747474;
+  color: var(--list-text);
+  background: var(--list);
   font-size: 10px;
-  padding-left: 3px;
-  padding-bottom: 4px;
-  background-color: #dedede;
-  padding-top: 3px;
+  padding: 3px 0 4px 3px;
   margin-bottom: 1px;
   width: 148px;
 }
 
 li:hover {
-  background-color: #ffa3a3;
+  background: var(--red-light);
   cursor: pointer;
 }
 
-/*Themes*/
+/*Themes & Colors*/
 :root {
+  --grey-dark1: #333333;
+  --grey-dark2: #444444;
+  --grey-dark3: #747474;
+  --grey-dark4: #929292;
+  --grey-light1: #dedede;
+  --grey-light2: #f8f8f8;
   --white: white;
-  --text-light-grey: #929292;
-  --text-dark-grey: #393939;
-  --bg-light-grey: #f8f8f8;
-  --bg-dark-grey: #444444;
-  --logo-dark-grey:#383838;
-  --logo-light-grey: #f1f1f1;
-  --li-bg-hover: #ffa3a3;
-  --li-bg: #dedede;
-  --li-color: #747474;
-  --input-focus-border: #efefef;
-  --input-focus: #4a4a4a;
-  --forms-bg: #333333;
+  --red-light: #ffa3a3;
 }
 
 .light {
-  --text: var(--text-dark-grey);
-  --bg: var(--bg-light-grey);
-  --logo: var(--logo-dark-grey);
+  --text: var(--grey-dark2);
+  --bg: var(--grey-light2);
+  --logo: var(--grey-dark1);
+  --list: var(--grey-light1);
+  --list-text: var(--grey-dark3);
 }
 
 .dark {
-  --text: var(--text-light-grey);
-  --bg: var(--bg-dark-grey);
-  --logo: var(--logo-light-grey);
+  --text: var(--grey-dark4);
+  --bg: var(--grey-dark2);
+  --logo: var(--grey-light2);
+  --list: var(--grey-dark3);
+  --list-text: var(--white);
 }
