@@ -3,18 +3,19 @@ import { Themes, Language } from "./const.js";
 var snippets = [];
 const list = document.getElementById("list");
 const input = document.getElementById("txt");
+const select = document.getElementById('theme');
 
 //List
 function addSnippet(snip) {
   if(snip != "" && !snippets.filter(s => s === snip).length) {
     snippets.push(snip);
-    list.innerHTML = "<li class='el'>" + snippets.join("</li><li class='el'>") + "</li>";
+    refreshSnippet();
   }
 }
 
 function delSnippet(snip) {
   snippets = snippets.filter(s => s !== snip);
-  list.innerHTML = snippets.length ? "<li class='el'>" + snippets.join("</li><li class='el'>") + "</li>" : "";
+  refreshSnippet();
 }
 
 function refreshSnippet() {
@@ -33,10 +34,6 @@ input.addEventListener("keyup", function(event) {
 list.addEventListener("click", function(event) {
   delSnippet(event.target.innerText);
   savesnippets();
-});
-
-document.getElementById('clear').addEventListener("click", function(event) {
-  chrome.storage.sync.set({'snippets': []});
 });
 
 
@@ -71,14 +68,13 @@ function loadsnippets() {
   
 }
 
-const select = document.getElementById('theme');
 select.addEventListener('change', function() {
   save_theme(select.value);
   switchTheme(select.value)   
 });
 
 function switchTheme(theme) {
-  document.getElementById('theme').value = theme || 'light';
+  select.value = theme || 'light';
   const cl = document.body.classList;
   theme === Themes.dark ? cl.replace('light', 'dark') : cl.replace('dark', 'light');
 }
