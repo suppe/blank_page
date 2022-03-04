@@ -4,7 +4,7 @@ var snippets = [];
 const list = document.getElementById("list");
 const input = document.getElementById("txt");
 
-/*ADD SNIPPETS*/
+//List
 function addSnippet(snip) {
   if(snip != "" && !snippets.filter(s => s === snip).length) {
     snippets.push(snip);
@@ -12,56 +12,63 @@ function addSnippet(snip) {
   }
 }
 
-/*DELETE SNIPPETS*/
 function delSnippet(snip) {
   snippets = snippets.filter(s => s !== snip);
   list.innerHTML = snippets.length ? "<li class='el'>" + snippets.join("</li><li class='el'>") + "</li>" : "";
 }
 
-/*LISTEN TO INPUT*/
+function refreshSnippet() {
+  list.innerHTML = snippets.length ? "<li class='el'>" + snippets.join("</li><li class='el'>") + "</li>" : "";
+}
+
 input.addEventListener("keyup", function(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
     addSnippet(input.value);
     input.value = '';
+    savesnippets();
   }
 });
 
-/*LISTEN TO LIST*/
 list.addEventListener("click", function(event) {
   delSnippet(event.target.innerText);
+  savesnippets();
+});
+
+document.getElementById('clear').addEventListener("click", function(event) {
+  chrome.storage.sync.set({'snippets': []});
 });
 
 
 //Chrome Cloud Storage
-//Quotes
-function load_quote() {
-  chrome.storage.sync.get('quotes', function(data){
-    addQuote(data.quotes);
-  })
-}
-
-function addQuote(quotes) {
-  for (let i in quotes) {
-    var listNode = document.getElementById("list"),
-    textNode = document.createTextNode(quotes[i]),
-    liNode = document.createElement("LI");
-    liNode.appendChild(textNode);
-    listNode.appendChild(liNode);
-  }
-  //refreshArray();
-}
 
 //Themes
 function save_theme(value) {
   chrome.storage.sync.set({'theme': value});
-  //chrome.storage.sync.set({'quotes': quotes});
+}
+
+function savesnippets() {
+  chrome.storage.sync.set({'snippets': snippets});
 }
 
 function load_theme() {
   chrome.storage.sync.get('theme', function(data){
     switchTheme(data.theme);
   });
+}
+
+function loadsnippets() {
+  
+  chrome.storage.sync.get('snippets', callback);
+
+  function callback(data) {
+    if(data.snippets != null) {
+      data.snippets.forEach(el => snippets.push(el));
+      refreshSnippet();
+    }
+  }
+
+  
 }
 
 const select = document.getElementById('theme');
@@ -82,12 +89,6 @@ function setLanguage(lang) {
 
 window.onload = function listen() {
   load_theme();
-  load_quote();
   setLanguage(navigator.language);
-  addSnippet('bla');
-  addSnippet('blub');
-  delSnippet('bla');
-  addSnippet('blub');
-  addSnippet('blub2');
-  addSnippet('blub3');
+  loadsnippets();
 }
