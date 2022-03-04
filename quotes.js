@@ -1,9 +1,8 @@
 import { quotes, Themes } from "./const.js";
 
-
 function load_theme() {
-    chrome.storage.sync.get('theme', function(data){
-      setBackgroundColor(data.theme);
+    chrome.storage.sync.get('theme', function(data) {
+        setBackgroundColor(data.theme);
     });
 }
 
@@ -23,4 +22,4 @@ window.onload = function newQuote() {
 
 chrome.storage.onChanged.addListener((changes, area) => {
     load_theme();
-  });
+});
