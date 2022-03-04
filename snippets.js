@@ -2,34 +2,32 @@ import { snippets_default, Themes } from "./const.js";
 
 var snippets = [];
 
-function load_theme() {
+//Load from Cloud
+function loadTheme() {
     chrome.storage.sync.get('theme', function(data) {
-        setBackgroundColor(data.theme);
+        setTheme(data.theme);
     });
     chrome.storage.sync.get('snippets', function(data) {
         snippets = data.snippets;
-        setRandomQuote();
+        setRandomSnippet();
     });
-    
 }
 
+chrome.storage.onChanged.addListener(_ => loadTheme());
 
-
-function setBackgroundColor(color) {
+//Set Theme & Snippets
+function setTheme(color) {
     document.body.style.backgroundColor = color === Themes.dark ? '#555555' : 'white';
 }
 
-function setRandomQuote() {
-    
-    var randomNumber = Math.floor(Math.random() * (snippets != null && snippets.length ? snippets.length : snippets_default.length));
-    document.getElementById('quoteDisplay').innerHTML = snippets != null && snippets.length ? snippets[randomNumber] : snippets_default[randomNumber];
+function setRandomSnippet() {
+    const randomNumber = Math.floor(Math.random());
+    document.getElementById('quoteDisplay').innerHTML = (snippets != null && snippets.length) 
+    ? snippets[randomNumber * snippets.length] 
+    : snippets_default[randomNumber * snippets_default.length];
 }
 
-window.onload = function newQuote() {
-    load_theme();
-    
+//On load
+window.onload = function() {
+    loadTheme();
 }
-
-chrome.storage.onChanged.addListener((changes, area) => {
-    load_theme();
-});

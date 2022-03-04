@@ -1,9 +1,6 @@
-import { Themes, Language } from "./const.js";
+import { list, input, select, Themes, Language } from "./const.js";
 
 var snippets = [];
-const list = document.getElementById("list");
-const input = document.getElementById("txt");
-const select = document.getElementById('theme');
 
 //List
 function addSnippet(snip) {
@@ -12,79 +9,75 @@ function addSnippet(snip) {
     refreshSnippet();
   }
 }
-
-function delSnippet(snip) {
-  snippets = snippets.filter(s => s !== snip);
-  refreshSnippet();
-}
-
-function refreshSnippet() {
-  list.innerHTML = snippets.length ? "<li class='el'>" + snippets.join("</li><li class='el'>") + "</li>" : "";
-}
-
 input.addEventListener("keyup", function(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
     addSnippet(input.value);
     input.value = '';
-    savesnippets();
+    saveSnippets();
   }
 });
 
+function delSnippet(snip) {
+  snippets = snippets.filter(s => s !== snip);
+  refreshSnippet();
+}
 list.addEventListener("click", function(event) {
   delSnippet(event.target.innerText);
-  savesnippets();
+  saveSnippets();
 });
 
+function refreshSnippet() {
+  list.innerHTML = snippets.length ? "<li class='el'>" + snippets.join("</li><li class='el'>") + "</li>" : "";
+}
 
-//Chrome Cloud Storage
-
-//Themes
-function save_theme(value) {
+//Theme Cloud
+function saveTheme(value) {
   chrome.storage.sync.set({'theme': value});
 }
 
-function savesnippets() {
-  chrome.storage.sync.set({'snippets': snippets});
-}
-
-function load_theme() {
-  chrome.storage.sync.get('theme', function(data){
-    switchTheme(data.theme);
-  });
-}
-
-function loadsnippets() {
-  
-  chrome.storage.sync.get('snippets', callback);
-
+function loadTheme() {
+  chrome.storage.sync.get('theme', callback);
   function callback(data) {
-    if(data.snippets != null) {
-      data.snippets.forEach(el => snippets.push(el));
-      refreshSnippet();
+    if(data.theme != null) {
+      switchTheme(data.theme);
     }
-  }
-
-  
+  }  
 }
-
-select.addEventListener('change', function() {
-  save_theme(select.value);
-  switchTheme(select.value)   
-});
 
 function switchTheme(theme) {
   select.value = theme || 'light';
   const cl = document.body.classList;
   theme === Themes.dark ? cl.replace('light', 'dark') : cl.replace('dark', 'light');
 }
+select.addEventListener('change', function() {
+  saveTheme(select.value);
+  switchTheme(select.value);
+});
 
+//Snippets Cloud
+function saveSnippets() {
+  chrome.storage.sync.set({'snippets': snippets});
+}
+
+function loadSnippets() {
+  chrome.storage.sync.get('snippets', callback);
+  function callback(data) {
+    if(data.snippets != null) {
+      data.snippets.forEach(el => snippets.push(el));
+      refreshSnippet();
+    }
+  }  
+}
+
+//Language
 function setLanguage(lang) {
   console.log(lang === Language.de ? 'deutsch' : 'englisch');
 } 
 
+//On Load
 window.onload = function listen() {
-  load_theme();
+  loadTheme();
   setLanguage(navigator.language);
-  loadsnippets();
+  loadSnippets();
 }
