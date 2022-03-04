@@ -1,4 +1,4 @@
-import { list, input, select, Themes, Language } from "./const.js";
+import { list, input, select, Themes } from "./const.js";
 
 var snippets = [];
 
@@ -69,11 +69,6 @@ function loadSnippets() {
     }
   }  
 }
-
-//Language
-function setLanguage(lang) {
-  console.log(lang === Language.de ? 'deutsch' : 'englisch');
-} 
 
 //On Load
 window.onload = function listen() {

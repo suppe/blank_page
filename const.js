@@ -3,11 +3,6 @@ export const Themes = {
     light: 'light'
 };
 
-export const Language = {
-    de: 'de-DE',
-    en: 'en-US'
-};
-
 export const snippetsDefault = [
     'hello world!',
     'free!',
