@@ -1,11 +1,5 @@
-var quotes = [
-    'hello world!',
-    'free!',
-    'now!',
-    'thinking...',
-    'minimal!',
-    'have a nice day!'
-];
+import { quotes, Themes } from "./const.js";
+
 
 function load_theme() {
     chrome.storage.sync.get('theme', function(data){
@@ -14,11 +8,7 @@ function load_theme() {
 }
 
 function setBackgroundColor(color) {
-    if(color === 'dark') {
-        document.body.style.backgroundColor = '#555555';
-    } else {
-        document.body.style.backgroundColor = 'white';
-    }
+    document.body.style.backgroundColor = color === Themes.dark ? '#555555' : 'white';
 }
 
 function setRandomQuote() {

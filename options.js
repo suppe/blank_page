@@ -1,23 +1,10 @@
+import { Themes, Language } from "./const.js";
+
 var inputText = document.getElementById("txt"),
   items = document.querySelectorAll("#list li"),
   tab = [],
   index,
-  snippets = [],
-  theme = null;
-
-function addSnippet(snippet) {
-  snippets.push(snippet);
-}
-
-function deleteSnippet(index) {
-  if (snippets.length >= index) {
-    snippets.splice(index, 1);
-  }
-}
-
-function clearTab() {
-  tab.splice(0, tab.length - 1);
-}
+  snippets = [];
 
 // get the selected li index using array
 // populate array with li values
@@ -50,26 +37,6 @@ function refreshArray() {
   }
 }
 
-function snippetToHtml(snippet) {
-  var list = document.getElementById("list");
-
-  var text = document.createTextNode(snippet)
-  var li = document.createElement("LI");
-
-  li.appendChild(text);
-  list.appendChild(li);
-
-  // add on click event on the new LI
-
-  li.onclick = function() {
-
-    deleteLI(tab.indexOf(li.innerHTML));
-    console.log('del');
-  }
-
-
-}
-
 function addLI() {
   if (input.value != "") {
     var listNode = document.getElementById("list"),
@@ -92,31 +59,6 @@ function addLI() {
       deleteLI();
     };
   }
-}
-
-function loadLI(quotes) {
-  deleteLI();
-  var listNode = document.getElementById("list"),
-    textNode = document.createNode(quotes[0]),
-    liNode = document.createElement("LI");
-
-  liNode.appendChild(textNode);
-  listNode.appendChild(liNode);
-
-  refreshArray();
-
-  liNode.onclick = function() {
-    index = tab.indexOf(liNode.innerHTML);
-    console.log(liNode.innerHTML + " INDEX = " + index);
-    // set the selected li value into input text
-    //inputText.value = liNode.innerHTML;
-  };
-}
-
-function editLI() {
-  // edit the selected li using input text
-  items[index].innerHTML = inputText.value;
-  refreshArray();
 }
 
 function deleteLI(ind) {
@@ -160,9 +102,6 @@ function addQuote(quotes) {
 
 //Themes
 function save_theme(value) {
-
-  var quotes = ['flower', 'stone', 'sun'];
-
   chrome.storage.sync.set({'theme': value});
   //chrome.storage.sync.set({'quotes': quotes});
 }
@@ -180,20 +119,13 @@ select.addEventListener('change', function() {
 });
 
 function switchTheme(theme) {
-  document.getElementById('theme').value = theme;
-  if(theme === 'dark') {
-    document.body.classList.replace('light', 'dark');
-  } else {
-    document.body.classList.replace('dark', 'light');
-  }
+  document.getElementById('theme').value = theme || 'light';
+  const cl = document.body.classList;
+  theme === Themes.dark ? cl.replace('light', 'dark') : cl.replace('dark', 'light');
 }
 
-function setLanguage(language) {
-  if(language === 'de-DE') {
-    console.log('deutsch');
-  } else {
-    console.log('englisch');
-  }
+function setLanguage(lang) {
+  console.log(lang === Language.de ? 'deutsch' : 'englisch');
 } 
 
 window.onload = function listen() {

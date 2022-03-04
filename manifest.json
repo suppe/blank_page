@@ -1,6 +1,6 @@
 
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "White Page",
     "description": "White Page with inspiring quotes on new page.",
     "version": "0.1",
@@ -10,9 +10,12 @@
     },
     "options_page": "options.html",
     "permissions": [
-        "activeTab", "https://ajax.googleapis.com/", "storage"
+        "activeTab", "storage"
     ],
-    "browser_action": {
+    "host_permissions": [
+        "https://ajax.googleapis.com/"
+    ],
+    "action": {
         "default_icon": "icons/icon16.png",
         "default_popup": "options.html"
     },
