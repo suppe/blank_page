@@ -4,7 +4,7 @@ var snippets = [];
 
 //List
 function addSnippet(snip) {
-  if(snip != "" && !snippets.filter(s => s === snip).length) {
+  if(snip !== "" && !snippets.filter(s => s === snip).length) {
     snippets.push(snip);
     refreshSnippet();
   }

@@ -1,6 +1,6 @@
 import { snippetsDefault, Themes } from "./const.js";
 
-var snippets = [];
+let snippets = [];
 
 //Load from Cloud
 function loadTheme() {
