@@ -1,4 +1,4 @@
-import { snippets_default, Themes } from "./const.js";
+import { snippetsDefault, Themes } from "./const.js";
 
 var snippets = [];
 
@@ -12,7 +12,6 @@ function loadTheme() {
         setRandomSnippet();
     });
 }
-
 chrome.storage.onChanged.addListener(_ => loadTheme());
 
 //Set Theme & Snippets
@@ -21,10 +20,9 @@ function setTheme(color) {
 }
 
 function setRandomSnippet() {
-    const randomNumber = Math.floor(Math.random());
-    document.getElementById('quoteDisplay').innerHTML = (snippets != null && snippets.length) 
-    ? snippets[randomNumber * snippets.length] 
-    : snippets_default[randomNumber * snippets_default.length];
+    document.getElementById('snippetDisplay').innerHTML = snippets != null && snippets.length 
+    ? snippets[Math.floor(Math.random() * snippets.length)]
+    : snippetsDefault[Math.floor(Math.random() * snippetsDefault.length)];
 }
 
 //On load

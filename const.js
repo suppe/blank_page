@@ -8,7 +8,7 @@ export const Language = {
     en: 'en-US'
 };
 
-export const snippets_default = [
+export const snippetsDefault = [
     'hello world!',
     'free!',
     'now!',

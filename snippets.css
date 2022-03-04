@@ -5,15 +5,11 @@ body {
   font-family: "Hack";
   font-size: 15px;
   text-align: center;
-  margin: 0;
-  height: 100%;
   overflow: hidden;
   transition: background 500ms ease-in-out, color 1000ms ease-in-out;
 }
 
-/*QUOTES*/
-#quoteDisplay {
-  padding: 250px 0 1000px 0;
-  width: 100%;
-  height: 100%;
+/*SNIPPETS*/
+#snippetDisplay {
+  padding-top: 23%;
 }
