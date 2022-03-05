@@ -73,6 +73,5 @@ function loadSnippets() {
 //On Load
 window.onload = function listen() {
   loadTheme();
-  setLanguage(navigator.language);
   loadSnippets();
 }
