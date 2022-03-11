@@ -1,5 +1,5 @@
 import { loadTheme, setTheme } from "./theme-service.js";
-import { loadSnippets, addSnippet, delSnippet } from "./list-service.js";
+import { loadSnippets, addSnippet, delSnippet } from "./snippet-service.js";
 
 
 //Event Listeners

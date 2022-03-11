@@ -1,5 +1,5 @@
 import { loadTheme } from "./theme-service.js";
-import { loadSnippets } from "./list-service.js";
+import { loadSnippets } from "./snippet-service.js";
 
 
 chrome.storage.onChanged.addListener(() => {
