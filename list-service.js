@@ -26,12 +26,12 @@ export function delSnippet(snip) {
     saveSnippets();
 }
 
-export function refreshSnippet() {
+function refreshSnippet() {
     list.innerHTML = snippets.length ? "<li class='el'>" + snippets.join("</li><li class='el'>") + '</li>' : '';
 }
 
 //Snippets Cloud
-export function saveSnippets() {
+function saveSnippets() {
     chrome.storage.sync.set({'snippets': snippets});
   }
   

@@ -1,4 +1,4 @@
-export const Themes = {
+const Themes = {
     dark: 'dark',
     light: 'light'
 };
