@@ -1,7 +1,9 @@
-import { list, input, select, Themes } from "./const.js";
-import { addSnippet, delSnippet, refreshSnippet, snippets, snippetsDefault } from "./list-service.js";
+import { loadTheme, saveTheme, setTheme } from "./theme-service.js";
+import { addSnippet, delSnippet, refreshSnippet, snippets } from "./list-service.js";
+
 
 //List
+const input = document.getElementById("txt");
 input.addEventListener("keyup", function(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
@@ -11,36 +13,17 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
-
+const list = document.getElementById("list");
 list.addEventListener("click", function(event) {
   delSnippet(event.target.innerText);
   saveSnippets();
 });
 
-
-
 //Theme Cloud
-function saveTheme(value) {
-  chrome.storage.sync.set({'theme': value});
-}
-
-function loadTheme() {
-  chrome.storage.sync.get('theme', callback);
-  function callback(data) {
-    if(data.theme != null) {
-      switchTheme(data.theme);
-    }
-  }  
-}
-
-function switchTheme(theme) {
-  select.value = theme || 'light';
-  const cl = document.body.classList;
-  theme === Themes.dark ? cl.replace('light', 'dark') : cl.replace('dark', 'light');
-}
+const select = document.getElementById('theme');
 select.addEventListener('change', function() {
   saveTheme(select.value);
-  switchTheme(select.value);
+  setTheme(select.value);
 });
 
 //Snippets Cloud

@@ -1,4 +1,4 @@
-import { Themes } from "./const.js";
+import { setTheme } from "./theme-service.js";
 import { snippetsDefault } from "./list-service.js";
 
 
@@ -7,20 +7,23 @@ let snippets = [];
 //Load from Cloud
 function loadTheme() {
     chrome.storage.sync.get('theme', function(data) {
-        setTheme(data.theme);
+        setTheme(data.theme)
     });
+}
+
+function loadSnippets() {
     chrome.storage.sync.get('snippets', function(data) {
         snippets = data.snippets;
         setRandomSnippet();
     });
 }
-chrome.storage.onChanged.addListener(_ => loadTheme());
 
-//Set Theme & Snippets
-function setTheme(color) {
-    document.body.style.backgroundColor = color === Themes.dark ? '#555555' : 'white';
-}
+chrome.storage.onChanged.addListener(() => {
+    loadTheme();
+    loadSnippets();
+});
 
+//Set Snippets
 function setRandomSnippet() {
     document.getElementById('snippetDisplay').innerHTML = snippets != null && snippets.length 
     ? snippets[Math.floor(Math.random() * snippets.length)]
@@ -30,4 +33,5 @@ function setRandomSnippet() {
 //On load
 window.onload = function() {
     loadTheme();
+    loadSnippets();
 }

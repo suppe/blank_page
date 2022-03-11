@@ -1,15 +1,31 @@
 /*BODY*/
 body {
-  color: #dedede;
-  background: #f8f8f8;
+  color: var(--text);
+  background: var(--bg);
   font-family: "Hack";
   font-size: 15px;
   text-align: center;
   overflow: hidden;
-  transition: background 500ms ease-in-out, color 1000ms ease-in-out;
 }
 
 /*SNIPPETS*/
 #snippetDisplay {
   padding-top: 23%;
+}
+
+/*THEMES & COLORS*/
+:root {
+  --grey-light1: #dedede;
+  --grey-light2: #f8f8f8;
+  --grey-dark: #555555;
+}
+
+.light {
+  --text: var(--grey-light1);
+  --bg: var(--grey-light2);
+}
+
+.dark {
+  --text: var(--grey-light1);
+  --bg: var(--grey-dark);
 }
