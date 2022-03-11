@@ -80,6 +80,9 @@ li {
   padding: 3px 0 4px 3px;
   margin-bottom: 1px;
   width: 148px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
 }
 
 li:hover {
