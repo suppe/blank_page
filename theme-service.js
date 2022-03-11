@@ -7,10 +7,12 @@ export function saveTheme(value) {
     chrome.storage.sync.set({'theme': value});
 }
 
-export function loadTheme() {
+export function loadTheme(hasSelect) {
     chrome.storage.sync.get('theme', function(data) {
         setTheme(data.theme);
-        setSelect(data.theme);
+        if(hasSelect === true) {
+            setSelect(data.theme);
+        }
     });
 }
 

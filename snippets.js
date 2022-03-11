@@ -1,16 +1,10 @@
-import { setTheme } from "./theme-service.js";
+import { loadTheme } from "./theme-service.js";
 import { snippetsDefault } from "./list-service.js";
 
 
 let snippets = [];
 
-//Load from Cloud
-function loadTheme() {
-    chrome.storage.sync.get('theme', function(data) {
-        setTheme(data.theme)
-    });
-}
-
+//Load Snippets
 function loadSnippets() {
     chrome.storage.sync.get('snippets', function(data) {
         snippets = data.snippets;
@@ -19,7 +13,7 @@ function loadSnippets() {
 }
 
 chrome.storage.onChanged.addListener(() => {
-    loadTheme();
+    loadTheme(false);
     loadSnippets();
 });
 
@@ -32,6 +26,6 @@ function setRandomSnippet() {
 
 //On load
 window.onload = function() {
-    loadTheme();
+    loadTheme(false);
     loadSnippets();
 }
