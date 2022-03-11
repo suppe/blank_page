@@ -1,14 +1,7 @@
 import { list, input, select, Themes } from "./const.js";
-
-var snippets = [];
+import { addSnippet, delSnippet, refreshSnippet, snippets, snippetsDefault } from "./list-service.js";
 
 //List
-function addSnippet(snip) {
-  if(snip !== "" && !snippets.filter(s => s === snip).length) {
-    snippets.push(snip);
-    refreshSnippet();
-  }
-}
 input.addEventListener("keyup", function(event) {
   if (event.key === 'Enter') {
     event.preventDefault();
@@ -18,18 +11,13 @@ input.addEventListener("keyup", function(event) {
   }
 });
 
-function delSnippet(snip) {
-  snippets = snippets.filter(s => s !== snip);
-  refreshSnippet();
-}
+
 list.addEventListener("click", function(event) {
   delSnippet(event.target.innerText);
   saveSnippets();
 });
 
-function refreshSnippet() {
-  list.innerHTML = snippets.length ? "<li class='el'>" + snippets.join("</li><li class='el'>") + "</li>" : "";
-}
+
 
 //Theme Cloud
 function saveTheme(value) {

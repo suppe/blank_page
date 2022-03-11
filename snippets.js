@@ -1,4 +1,6 @@
-import { snippetsDefault, Themes } from "./const.js";
+import { Themes } from "./const.js";
+import { snippetsDefault } from "./list-service.js";
+
 
 let snippets = [];
 
