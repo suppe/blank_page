@@ -1,4 +1,4 @@
-import { loadTheme, setTheme } from "./theme-service.js";
+import { ThemeService } from "./theme-service.js";
 import { SnippetService } from "./snippet-service.js";
 
 
@@ -18,11 +18,11 @@ document.getElementById('list').addEventListener('click', function(event) {
 
 const select = document.getElementById('theme');
 select.addEventListener('change', function() {
-  setTheme(select.value);
+  ThemeService.setTheme(select.value);
 });
 
 //On Load
 window.onload = function listen() {
-  loadTheme();
+  ThemeService.loadTheme();
   SnippetService.loadSnippets();
 }

@@ -1,17 +1,14 @@
-import { loadTheme } from "./theme-service.js";
+import { ThemeService } from "./theme-service.js";
 import { SnippetService } from "./snippet-service.js";
 
 
 chrome.storage.onChanged.addListener(() => {
-    loadTheme();
-    //loadSnippets();
+    ThemeService.loadTheme();
     SnippetService.loadSnippets();
 });
 
 //On load
 window.onload = function() {
-    loadTheme();
-    //loadSnippets();
-
+    ThemeService.loadTheme();
     SnippetService.loadSnippets();
 }
