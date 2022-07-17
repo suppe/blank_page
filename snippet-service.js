@@ -52,5 +52,4 @@ export const SnippetService = {
         ? snip[Math.floor(Math.random() * snip.length)]
         : SnippetService.snippetsDefault[Math.floor(Math.random() * SnippetService.snippetsDefault.length)];
     }
-
 };
