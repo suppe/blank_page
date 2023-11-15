@@ -23,6 +23,7 @@ select.addEventListener('change', function() {
 
 //On Load
 window.onload = function listen() {
+  console.log('options load');
   ThemeService.loadTheme();
   SnippetService.loadSnippets();
 }
