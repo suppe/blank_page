@@ -29,4 +29,5 @@ window.onload = function listen() {
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
   ThemeService.setThemeByOs();
+  ThemeService.setExtensionIcon();
 });
