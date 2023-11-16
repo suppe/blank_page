@@ -1,7 +1,6 @@
 import { ThemeService } from "./theme-service.js";
 import { SnippetService } from "./snippet-service.js";
 
-
 //Event Listeners
 const input = document.getElementById("txt");
 input.addEventListener('keyup', function(event) {
