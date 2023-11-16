@@ -1,5 +1,13 @@
 export const SnippetService = {
     snippets: [],
+    snippetsDefault: [
+        'hello world!',
+        'free!',
+        'now!',
+        'thinking...',
+        'minimal!',
+        'have a nice day!'
+    ],
 
     list: document.getElementById('list'),
 
@@ -34,39 +42,18 @@ export const SnippetService = {
                 SnippetService.snippets = data.snippets;
                 SnippetService.list ? SnippetService.refreshSnippet() : SnippetService.setRandomSnippet(data.snippets);
             } else if (data.snippets === undefined) {
-                SnippetService.setRandomSnippet(null);
+                SnippetService.setRandomSnippet('');
             }
         }
     },
 
     //Set Random Snips
     setRandomSnippet(snip) {
-
-
         const snipDisplay = document.getElementById('snippetDisplay');
-        if(snip != null && snip.length) {
-             snipDisplay.innerHTML = snip[Math.floor(Math.random() * snip.length)];
-        } else {
-            const snippetsDefault = [
-                'hello world!',
-                'free!',
-                'now!',
-                'thinking...',
-                'minimal!',
-                'have a nice day!'
-            ];
-            snippetsDefault[Math.floor(Math.random() * snippetsDefault.length)];
-            snipDisplay.innerHTML =  ?;
-            console.log(snippetsDefault[Math.floor(Math.random() * snippetsDefault.length)]);
+        if(snipDisplay) {
+            snipDisplay.innerHTML = snip != null && snip.length
+                ? snip[Math.floor(Math.random() * snip.length)]
+                : SnippetService.snippetsDefault[Math.floor(Math.random() * SnippetService.snippetsDefault.length)];
         }
-
-
-        /*
-        document.getElementById('snippetDisplay').innerHTML = snip != null && snip.length 
-        ? snip[Math.floor(Math.random() * snip.length)]
-        : SnippetService.snippetsDefault[Math.floor(Math.random() * SnippetService.snippetsDefault.length)];
-
-         */
     }
-
 };
