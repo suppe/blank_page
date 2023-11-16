@@ -46,5 +46,17 @@ export const ThemeService = {
 
     checkSystem() {
         return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    },
+
+    //Set Extension Icon when System Theme changes
+    setExtensionIcon() {
+        const isDark = ThemeService.checkSystem() === 'dark';
+        chrome.action.setIcon({
+            path: {
+                "16": isDark ? "icons/icon16-dark.png" : "icons/icon16.png",
+                "48": isDark ? "icons/icon48-dark.png" : "icons/icon48.png",
+                "128": isDark ? "icons/icon128-dark.png" : "icons/icon128.png",
+            }
+        })
     }
 };
