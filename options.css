@@ -1,16 +1,25 @@
+/*FONT*/
+@font-face {
+  font-family: 'Hack';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Hack-Regular.ttf') format('ttf');
+}
+
 /*BODY*/
 body {
   color: var(--text);
   background: var(--bg);
   text-align: center;
-  font-family: "Hack";
+  font-family: 'Hack', sans-serif;
   width: 150px;
+  font-size: 13px;
 }
 
 /*LOGO*/
 #logo {
   color: var(--logo);
-  font-size: 15px;
+  font-size: 17px;
   margin-top: 20px;
 }
 
@@ -19,7 +28,7 @@ body {
   color: var(--white);
   border: none;
   box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 1);
-  font-size: 1em;
+  font-size: 13px;
   text-align-last: center;
   padding: .75em 1em .5em 1em;
   -webkit-appearance: none;
@@ -76,7 +85,7 @@ ul {
 li {
   color: var(--list-text);
   background: var(--list);
-  font-size: 10px;
+  font-size: 12px;
   padding: 3px 0 4px 3px;
   margin-bottom: 1px;
   width: 148px;

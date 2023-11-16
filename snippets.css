@@ -1,9 +1,17 @@
+/*FONT*/
+@font-face {
+  font-family: 'Hack';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Hack-Regular.ttf') format('ttf');
+}
+
 /*BODY*/
 body {
   color: var(--text);
   background: var(--bg);
-  font-family: "Hack";
-  font-size: 15px;
+  font-family: 'Hack', sans-serif;
+  font-size: 17px;
   text-align: center;
   overflow: hidden;
 }
